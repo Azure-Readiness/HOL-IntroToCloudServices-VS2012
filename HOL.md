@@ -103,7 +103,7 @@ In this task, you create a new Cloud Service project in Visual Studio.
 
 1. In the **New Project dialog**, expand **Visual C#** in the **Installed** list and select **Cloud**. Choose the **Windows Azure Cloud Service** template, set the Name of the project to GuestBook, set the location to **\Source\Ex1-BuildingYourFirstWindowsAzureApp**, change the solution name to **Begin**, and ensure that **Create directory for solution** is checked. Click **OK** to create the project.
 
-	![Creating a new Windows Azure Cloud Service project](images/new-cloud-service-project.png?raw=true "Creating a new Windows Azure Cloud Service project")
+	![Creating a new Windows Azure Cloud Service project](Images/new-cloud-service-project.png?raw=true "Creating a new Windows Azure Cloud Service project")
 
 	_Creating a new Windows Azure Cloud Service project_
 				
@@ -111,13 +111,13 @@ In this task, you create a new Cloud Service project in Visual Studio.
 
 1. In the **New Windows Azure Cloud Service** dialog, inside the **Roles** panel, expand the **Visual C#** tab. Select **ASP.NET Web Role** from the list of available roles and click the arrow (**>**) to add an instance of this role to the solution. Before closing the dialog, select the new role in the right panel, click the pencil icon and rename the role as **GuestBook_WebRole**. Click **OK** to create the cloud service solution.
 
-	![Assigning roles to a Cloud Service project](images/assigning-a-webrole-to-a-cloud-service-project.png?raw=true "Assigning roles to a Cloud Service project")
+	![Assigning roles to a Cloud Service project](Images/assigning-a-webrole-to-a-cloud-service-project.png?raw=true "Assigning roles to a Cloud Service project")
 	
 	_Assigning roles to a Cloud Service project_
 
 1. In **Solution Explorer**, review the structure of the created solution.
  
-	![Solution Explorer showing the GuestBook application](images/solution-explorer-guestbook.png?raw=true "Solution Explorer showing the GuestBook application")
+	![Solution Explorer showing the GuestBook application](Images/solution-explorer-guestbook.png?raw=true "Solution Explorer showing the GuestBook application")
 
 	_Solution Explorer showing the GuestBook application_
 
@@ -149,7 +149,7 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 
 1. In the **Add New Project** dialog, expand the language of your choice under the **Installed** tree view, select the **Windows** category, and then choose the **Class Library** project template. Set the name to _GuestBook_Data_, leave the proposed location inside the solution folder unchanged, and then click **OK**.
 
-	![Creating a class library for GuestBook entities](images/creating-class-library-guestbook.png?raw=true "Creating a class library for GuestBook entities")
+	![Creating a class library for GuestBook entities](Images/creating-class-library-guestbook.png?raw=true "Creating a class library for GuestBook entities")
 
 	_Creating a class library for GuestBook entities_
  
@@ -157,19 +157,19 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 
 1. Add a reference to the .NET Client Library for WCF Data Services in the **GuestBook_Data project**. In **Solution Explorer**, right-click the **GuestBook_Data** project node, select **Add Reference**, click the **.NET** tab, select the **System.Data.Services.Client** component and click **OK**.
 
-	![Adding a reference to the System.Data.Service.Client component](images/adding-reference-systemdataservice.png?raw=true "Adding a reference to the System Data Service Client component")
+	![Adding a reference to the System.Data.Service.Client component](Images/adding-reference-systemdataservice.png?raw=true "Adding a reference to the System Data Service Client component")
 
 	_Adding a reference to the System.Data.Service.Client component_
   
 1. Add a reference to the Windows Azure Storage Client in the **GuestBook_Data project**. In **Solution Explorer**, right-click the **GuestBook_Data** project node, select **Add Reference**, click the **Extensions** tab, select the **Microsoft.WindowsAzure.StorageClient** component and click **OK**.
 
-	![Adding a reference to the Microsoft.WindowsAzure.StorageClient component](images/adding-reference-windowszurestorageclient.png?raw=true "Adding a reference to the Microsoft WindowsAzure Storage Client component")
+	![Adding a reference to the Microsoft.WindowsAzure.StorageClient component](Images/adding-reference-windowszurestorageclient.png?raw=true "Adding a reference to the Microsoft WindowsAzure Storage Client component")
 
 	_Adding a reference to the Microsoft.WindowsAzure.StorageClient component_
 
 1. Before you can store an entity in a table, you must first define its schema. To do this, right-click **GuestBook_Data** in **Solution Explorer**, point to **Add** and select **Class**. In the **Add New Item** dialog, set the name to **GuestBookEntry.cs** and click **Add**.
 
-	![Adding the GuestBookEntry class](images/adding-guestbookentry-class.png?raw=true "Adding the GuestBookEntry class")
+	![Adding the GuestBookEntry class](Images/adding-guestbookentry-class.png?raw=true "Adding the GuestBookEntry class")
 
 	_Adding the GuestBookEntry class_
  
@@ -593,13 +593,13 @@ In this task, you update the web role project that you generated in Task 1, when
 
 1. Because the web role uses Storage services, you need to provide your storage account settings. To create a new setting, in **Solution Explorer**, expand the **Roles** node in the **GuestBook** project, double-click **GuestBook_WebRole** to open the properties for this role and select the **Settings** tab. Click **Add Setting**, type _"DataConnectionString"_ in the **Name** column, change the **Type** to _Connection String_, and then click the button labeled with an ellipsis.
 
-	![Configuring the storage account settings](images/configuring-storage-settings.png?raw=true "Configuring the storage account settings")
+	![Configuring the storage account settings](Images/configuring-storage-settings.png?raw=true "Configuring the storage account settings")
 
 	_Configuring the storage account settings_
 
 1. In the **Storage Account Connection String** dialog, choose the option labeled **Use the Storage emulator** and then click **OK**. 
 
-	![Creating a connection string for the storage emulator](images/connection-string-storage-emulator.png?raw=true "Creating a connection string for the storage emulator")
+	![Creating a connection string for the storage emulator](Images/connection-string-storage-emulator.png?raw=true "Creating a connection string for the storage emulator")
 
 	_Creating a connection string for the storage emulator_ 
 
@@ -736,17 +736,17 @@ Among the features available in the Windows Azure Tools for Microsoft Visual Stu
 
 1. Press **F5** to execute the service. The service builds and then launches the local Windows Azure compute emulator. To show the Compute Emulator UI, right-click its icon located in the system tray and select **Show Compute Emulator UI**.
 
-	![Showing the Compute Emulator UI](images/showing-the-compute-emulator-ui.png?raw=true "Showing the Compute Emulator UI")
+	![Showing the Compute Emulator UI](Images/showing-the-compute-emulator-ui.png?raw=true "Showing the Compute Emulator UI")
  
 	_Showing the Compute Emulator UI_
  
 	>**Note:** If it is the first time you run the **Windows Azure Emulator**, the System will show a **Windows Security Alert** dialog indicating the Firewall has blocked some features. Click **Allow Access** to continue.
 	
-	>![Unblocking the Firewall](images/warning-unblocking-firewall.png?raw=true "Unblocking the Firewall")
+	>![Unblocking the Firewall](Images/warning-unblocking-firewall.png?raw=true "Unblocking the Firewall")
 	
 	>**Note:** When you use the storage emulator for the first time, it needs to execute a one-time initialization procedure to create the necessary database and tables. If this is the case, wait for the procedure to complete and examine the **Development Storage Initialization** dialog to ensure that it completes successfully.
 
-	>![Storage emulator initialization process](images/initialization-process.png?raw=true "Storage emulator initialization process")
+	>![Storage emulator initialization process](Images/initialization-process.png?raw=true "Storage emulator initialization process")
 
 	_Storage emulator initialization process_
 
@@ -754,7 +754,7 @@ Among the features available in the Windows Azure Tools for Microsoft Visual Stu
 
 1. Add a new entry to the guest book. To do this, type your name and a message, choose an image to upload from the **Pictures\Sample Pictures** library, and then click the pencil icon to submit the entry.
 
-	![Windows Azure GuestBook home page](images/guestbook-home-page.png?raw=true "Windows Azure GuestBook home page")
+	![Windows Azure GuestBook home page](Images/guestbook-home-page.png?raw=true "Windows Azure GuestBook home page")
 
 	_Windows Azure GuestBook home page_
 
@@ -763,7 +763,7 @@ Among the features available in the Windows Azure Tools for Microsoft Visual Stu
 	Once you submit an entry, the web role creates a new entity in the guest book table and uploads the photo to blob storage. The page contains a timer that triggers a page refresh every 5 seconds, so the new entry should appear on the page after a brief interval. 
 	Initially, the new entry contains a link to the blob that contains the uploaded image so it will appear with the same size as the original image. 
 
-	![GuestBook application showing an uploaded image in its original size](images/guestbook-application-uploaded-image.png?raw=true "GuestBook application showing an uploaded image in its original size")
+	![GuestBook application showing an uploaded image in its original size](Images/guestbook-application-uploaded-image.png?raw=true "GuestBook application showing an uploaded image in its original size")
 
 	_GuestBook application showing an uploaded image in its original size_
 
@@ -773,31 +773,31 @@ Among the features available in the Windows Azure Tools for Microsoft Visual Stu
 
 1. Expand the **(Development)** node and then the **Tables** node inside it. Notice that it contains a table named _GuestBookEntry_ created by the application that should contain details for each entry.
 
-	![Viewing tables in the Storage emulator](images/unfolding-storage-emulator-tables.png?raw=true "Viewing tables in the Storage emulator")
+	![Viewing tables in the Storage emulator](Images/unfolding-storage-emulator-tables.png?raw=true "Viewing tables in the Storage emulator")
 
 	_Viewing tables in the Storage emulator_
 
 1. Double-click the _GuestBookEntry_ node in the **Windows Azure Storage** explorer to show the contents of this table. The _GuestBookEntry_ table contains information for the entry that you created earlier in this task, including its _GuestName_, _Message_, _PhotoUrl_, and _ThumbnailUrl_ properties, as well as the _PartitionKey_, _RowKey_, and _Timestamp_ properties common to all table storage entities. Notice that the _PhotoUrl_ and _ThumbnailUrl_ properties are currently the same. In the next exercise, you will modify the application to generate image thumbnails and to update the corresponding URL.
 
-	![Viewing tables in the Storage emulator](images/storage-emulator-tables.png?raw=true "Viewing tables in the Windows Azure storage emulator")
+	![Viewing tables in the Storage emulator](Images/storage-emulator-tables.png?raw=true "Viewing tables in the Windows Azure storage emulator")
 
 	_Viewing tables in the Storage emulator_
 
 1. Now, expand the **Blobs** node in the **Windows Azure Storage** explorer. Inside this node, you will find an entry for a container named _guestbookpics_ that contains blobs with raw data for the images uploaded by the application. 
 
-	![Viewing blobs using the Windows Azure Tools for Visual Studio](images/viewing-blobs.png?raw=true "Viewing blobs using the Windows Azure Tools for Visual Studio")
+	![Viewing blobs using the Windows Azure Tools for Visual Studio](Images/viewing-blobs.png?raw=true "Viewing blobs using the Windows Azure Tools for Visual Studio")
 
 	_Viewing blobs using the Windows Azure Tools for Visual Studio_
 
 1. Double-click the node for the _guestbookpics_ container to list the blobs it contains. It should include an entry for the image that you uploaded earlier
 
-	![Viewing the contents of a blob container in Visual Studio](images/viewing-blob-contents.png?raw=true "Viewing the contents of a blob container in Visual Studio")
+	![Viewing the contents of a blob container in Visual Studio](Images/viewing-blob-contents.png?raw=true "Viewing the contents of a blob container in Visual Studio")
 
 	_Viewing the contents of a blob container in Visual Studio_
 
 1. Each blob in blob storage has an associated content type that Visual Studio uses to select a suitable viewer for the blob. To display the contents of the blob, double-click the corresponding entry in the container listing to display the image.
 
-	![Viewing blob contents in Visual Studio](images/viewing-blob-contents-2.png?raw=true "Viewing blob contents in Visual Studio")
+	![Viewing blob contents in Visual Studio](Images/viewing-blob-contents-2.png?raw=true "Viewing blob contents in Visual Studio")
 
 	_Viewing blob contents in Visual Studio_
 
@@ -822,7 +822,7 @@ In this task, you add a worker role project to the solution and update it so tha
 
 1. In the **Add New Role Project** dialog, select the **Worker Role** category and choose the **Worker Role** template. Set the name of the worker role to **GuestBook_WorkerRole** and click **Add**.
 
-	![Adding a worker role project to the solution](images/adding-worker-role.png?raw=true "Adding a worker role project to the solution")
+	![Adding a worker role project to the solution](Images/adding-worker-role.png?raw=true "Adding a worker role project to the solution")
 
 	_Adding a worker role project to the solution_
 
@@ -1065,13 +1065,13 @@ You now launch the updated application in the Windows Azure compute emulator to 
 
 1. Wait a few seconds until the worker role picks up the queued message and processes the image that you are viewing. Once that occurs, it generates a thumbnail for this image and updates the corresponding URL property for the entry in table storage. Eventually, because the page refreshes every few seconds, it will show the thumbnail image instead.
 
-	![Home page showing the thumbnail generated by the worker role](images/guestbook-thumbnail.png?raw=true "Home page showing the thumbnail generated by the worker role")
+	![Home page showing the thumbnail generated by the worker role](Images/guestbook-thumbnail.png?raw=true "Home page showing the thumbnail generated by the worker role")
 
 	_Home page showing the thumbnail generated by the worker role_
 
 1. In **Server Explorer**, expand the **Blobs** node in the **Windows Azure Storage** node, and then double-click the _guestbookpics_ container. Notice that it now contains an additional blob for the generated thumbnail image.
 
-	![Blob container showing the blob for the generated thumbnail](images/thumbnail-blob.png?raw=true "Blob container showing the blob for the generated thumbnail")
+	![Blob container showing the blob for the generated thumbnail](Images/thumbnail-blob.png?raw=true "Blob container showing the blob for the generated thumbnail")
 
 	_Blob container showing the blob for the generated thumbnail_
 
@@ -1094,55 +1094,55 @@ The application you publish in this exercise requires both compute and storage s
 
 1. Navigate to [https://manage.windowsazure.com](https://manage.windowsazure.com) using a Web browser and sign in using the Microsoft Account associated with your Windows Azure account.
 
-	![Signing in to the Windows Azure Management Portal](images/sign-in.png?raw=true "Signing in to the Windows Azure Management Portal")
+	![Signing in to the Windows Azure Management Portal](Images/sign-in.png?raw=true "Signing in to the Windows Azure Management Portal")
 
 	_Signing in to the Windows Azure Management Portal_
 
 1. First, you create an affinity group where your services will be deployed. In the Windows Azure menu, click **Networks**.
 
-	![Networks](images/networks.png?raw=true "Networks")
+	![Networks](Images/networks.png?raw=true "Networks")
 
 	_Select Networks_
 
 1. In the Networks top menu, click **Affinity Groups**
 
-	![Networks page](images/affinity-groups.png?raw=true "Networks page")
+	![Networks page](Images/affinity-groups.png?raw=true "Networks page")
 
 	_Networks page_
 
 1. Your affinity groups are listed. In the bottom pane, click **Create**.
 
-	![Create Affinity Group](images/create-affinity-group.png?raw=true "Create Affinity Group")
+	![Create Affinity Group](Images/create-affinity-group.png?raw=true "Create Affinity Group")
 
 	_Create Affinity Group_
 
 1. In the **Specify affinity group details** dialog, enter the name and region of your new group.
 
-	![Affinity Group Details](images/affinity-group-details.png?raw=true "Affinity Group Details")
+	![Affinity Group Details](Images/affinity-group-details.png?raw=true "Affinity Group Details")
 
 	_Affinity Group Details_
 
 1. Now, you create the storage account that the application will use to store its data. In the Windows Azure bottom pane, click **New**.
 
-	![Creating a new Azure service](images/new-azure.png?raw=true "Creating a new Azure service")
+	![Creating a new Azure service](Images/new-azure.png?raw=true "Creating a new Azure service")
 
 	_Creating a new Azure service_
 
 1. In the **New** dialog, click **Data Service**, click **Storage** and select **Quick Create** option.
 
-	![Creating a new storage](images/new-storage-account.png?raw=true "Creating a new storage")
+	![Creating a new storage](Images/new-storage-account.png?raw=true "Creating a new storage")
 
 	_Creating a new storage_
 
 1. In the textbox labeled **Enter a URL**, enter the name for your storage account, for example, **\<yourname\>guestbook**, where \<yourname\> is a unique name. Windows Azure uses this value to generate the endpoint URLs for the storage account services. Then, select the drop down list labeled **Region/Affinity group** and pick the affinity group you created in the previous step.
 
-	![Choosing the URL of the new storage account](images/create-storage-account-url.png?raw=true "Choosing the URL of the new storage account")
+	![Choosing the URL of the new storage account](Images/create-storage-account-url.png?raw=true "Choosing the URL of the new storage account")
 
 	_Choosing the URL of the new storage account_
 
 	>**Note:** The portal ensures that the name is valid by verifying that the name complies with the naming rules and is currently available. A validation error will be shown if you enter a name that does not satisfy the rules.
 	>
-	>![Name verification](images/warning-name-verification.png?raw=true "Name verification")
+	>![Name verification](Images/warning-name-verification.png?raw=true "Name verification")
 	> 
 	> Additionally, the reason that you can choose an affinity group is to deploy both the cloud service and storage account to the same location, thus ensuring high bandwidth and low latency between the application and the data it depends on.
 
@@ -1150,19 +1150,19 @@ The application you publish in this exercise requires both compute and storage s
 
 1. At the list view, click on the name of the new storage.
 
-	![Select the storage account ](images/select-storage-account.png?raw=true "Select the storage account")
+	![Select the storage account ](Images/select-storage-account.png?raw=true "Select the storage account")
 
 	_Select the storage_
 
 1. At the dashboard page, click **Manage Keys**.
 
-	![Manage keys ](images/view-keys.png?raw=true "View keys")
+	![Manage keys ](Images/view-keys.png?raw=true "View keys")
 
 	_Manage keys_
 
 1. At the **Manage Access Keys** dialog, select and copy the primary key.
 
-	![Primary and Secondary Access Keys ](images/manage-access-keys.png?raw=true "Primary and Secondary Access Keys")
+	![Primary and Secondary Access Keys ](Images/manage-access-keys.png?raw=true "Primary and Secondary Access Keys")
 
 	_Primary and Secondary Access Keys_
 	
@@ -1170,13 +1170,13 @@ The application you publish in this exercise requires both compute and storage s
 
 1. Next, create the Cloud Service that executes the application code. Click **New**, **Compute**, **Cloud Service** and then **Quick Create**. 
 
-	![Creating a new cloud service](images/creating-a-new-cloud-service.png?raw=true "Creating a new cloud service")
+	![Creating a new cloud service](Images/creating-a-new-cloud-service.png?raw=true "Creating a new cloud service")
 	
 	_Creating a new cloud service_
 
 1. In the **Create a new Cloud Service** dialog, enter an URL for the service name in the textbox labeled **URL**, for example, **\<yourname\>guestbook**, where <_yourname_> is a unique name. Select the same affinity group used for your storage account.
 
-	![New Cloud Service URL and Region/Affinity Group](images/new-cloud-service-url.png?raw=true "New Cloud Service URL and Affinity Group")
+	![New Cloud Service URL and Region/Affinity Group](Images/new-cloud-service-url.png?raw=true "New Cloud Service URL and Affinity Group")
 
 	_New Cloud Service URL and Region/Affinity Group_
 
@@ -1217,14 +1217,14 @@ Alternatively, you may continue with the solution that you obtained after comple
 
 1. Next, replace the placeholder labeled _[YOUR_ACCOUNT_KEY]_ with the **Primary Access Key** value that you recorded earlier, when you created the storage account in Task 1. Again, replace both instances of the placeholder, one for each connection string.
 
-	![Configuring the storage account connection string](images/configuring-storage-account-connection.png?raw=true "Configuring the storage account connection string")
+	![Configuring the storage account connection string](Images/configuring-storage-account-connection.png?raw=true "Configuring the storage account connection string")
 
 	_Configuring the storage account connection strings_
 
 1. Generate the package to publish to the cloud. To do this, right-click the **GuestBook** cloud project and select **Package**. In the **Package Windows Azure Application** dialog, select the **Service Configuration** and the **Build Configuration** you will use from the dropdowns and then click **Package**. 
 After Visual Studio builds the project and generates the service package, Windows Explorer opens with the current folder set to the location where the generated package is stored.
 
-	![Creating a service package in Visual Studio](images/creating-a-service-package.png?raw=true "Creating a service package in Visual Studio")
+	![Creating a service package in Visual Studio](Images/creating-a-service-package.png?raw=true "Creating a service package in Visual Studio")
 	
 	_Creating a service package in Visual Studio_
 
@@ -1234,13 +1234,13 @@ After Visual Studio builds the project and generates the service package, Window
 
 1. At Cloud Services list, click on the name of the cloud service that you created in the previous step.
 
-	![Cloud Service](images/cloud-service.png?raw=true "Cloud Service")
+	![Cloud Service](Images/cloud-service.png?raw=true "Cloud Service")
 
 	_Cloud Service_
 
 1. At the cloud service page, click **Staging** and then, click **Upload New Staging Environment**. 
 
-	![Deploy to staging environment](images/deploy-to-staging-environment.png?raw=true "Deploy to staging environment")
+	![Deploy to staging environment](Images/deploy-to-staging-environment.png?raw=true "Deploy to staging environment")
 
 	_Deploy to staging environment_
 
@@ -1260,13 +1260,13 @@ After Visual Studio builds the project and generates the service package, Window
 
 	>**Note:** In this particular case, only a single instance is being deployed for at least one of the roles. This is not recommended because it does not guarantee the service’s availability. In the next task, you will increase the number of instances to overcome this issue.
 
-	![Upload package to staging](images/upload-package-to-staging.png?raw=true "Upload package to staging")
+	![Upload package to staging](Images/upload-package-to-staging.png?raw=true "Upload package to staging")
 
 	_Upload package to staging_
 
 1. Notice that the package begins to upload and that the portal shows the status of the deployment to indicate its progress. 
 
-	![Uploading cloud service](images/uploading-cloud-service.png?raw=true "Uploading cloud service")
+	![Uploading cloud service](Images/uploading-cloud-service.png?raw=true "Uploading cloud service")
 
 	_Uploading cloud service_
 
@@ -1276,7 +1276,7 @@ After Visual Studio builds the project and generates the service package, Window
 
 1. After succesfull deployment, at **Cloud Services** pages click on your cloud service name to view its dashboard
 	
-	![Cloud Service Dashboard](images/cloud-service-dashboard.png?raw=true "Cloud Service Dashboard")
+	![Cloud Service Dashboard](Images/cloud-service-dashboard.png?raw=true "Cloud Service Dashboard")
 
 	_Cloud Service Dashboard_
 
@@ -1289,17 +1289,17 @@ Before you can test the deployed application, you need to configure it. In this 
 
 1. In **Cloud Services**, click on your **GuestBook** service and click **Scale** on the ribbon.
 
-	![Scaling instances](images/scaling-instances.png?raw=true "Scaling instances")
+	![Scaling instances](Images/scaling-instances.png?raw=true "Scaling instances")
 
 	_Scaling instances_
 
 1. In the **Scale** page, increase the instance count up to 2, for each role.
 
-	![Increment instance count](images/increment-instance-count.png?raw=true "Increment instance count")
+	![Increment instance count](Images/increment-instance-count.png?raw=true "Increment instance count")
 
 	_Increment instance count_
 
-	![New instance count](images/new-instance-count.png?raw=true "New instance count")
+	![New instance count](Images/new-instance-count.png?raw=true "New instance count")
 
 	_Increment instance count_
 
@@ -1309,17 +1309,17 @@ Before you can test the deployed application, you need to configure it. In this 
 
 1. Click **Save** at bottom pane to update the configuration and wait for the cloud service to apply the new settings. 
 
-	![Saving the instance count](images/saving-instance-count.png?raw=true "Saving the instance count")
+	![Saving the instance count](Images/saving-instance-count.png?raw=true "Saving the instance count")
 
 	_Saving the instance count_
 
 	>**Note:** The portal displays a message _"Changing scale settings..."_ while the settings are applied.
 
-	>![Changing scale settings](images/changing-scale-settings.png?raw=true "Changing scale settings")
+	>![Changing scale settings](Images/changing-scale-settings.png?raw=true "Changing scale settings")
 
 	>_Changing scale settings_
 
-	>![Scale in progress](images/scale-in-progress.png?raw=true "Scale in progress")
+	>![Scale in progress](Images/scale-in-progress.png?raw=true "Scale in progress")
 
 	>_Scale in progress_
 
@@ -1330,7 +1330,7 @@ In this task, you run the application in the staging environment and access its 
 
 1. In **Cloud Services**, click on your  service and then click the link located in the right pane under **Site URL**.
 
-	![Site URL](images/site-url.png?raw=true "Site URL")
+	![Site URL](Images/site-url.png?raw=true "Site URL")
 
 	_Site URL_
 
@@ -1338,7 +1338,7 @@ In this task, you run the application in the staging environment and access its 
 
 1. If you wish, you may test the application by signing the guest book and uploading an image.
 
-	![Application running in the staging environment](images/running-in-the-staging-environmen.png?raw=true "Application running in the staging environment")
+	![Application running in the staging environment](Images/running-in-the-staging-environmen.png?raw=true "Application running in the staging environment")
 
 	_Application running in the staging environment_
 
@@ -1349,31 +1349,31 @@ Now that you have verified that the service is working correctly in the staging 
 
 1. In **Cloud Services**, click on your service and then click **Swap** on the bottom pane.
 
-	![Swap slots](images/promoting-to-the-production-s.png?raw=true "Swap slots")
+	![Swap slots](Images/promoting-to-the-production-s.png?raw=true "Swap slots")
 
 	_Swap slots_
 
 1. On the **VIP Swap?** dialog, click **Yes** to swap the deployments between staging and production.
 
-	![Promoting the application to the production slot](images/swap-dialog.png?raw=true "Promoting the application to the production slot")
+	![Promoting the application to the production slot](Images/swap-dialog.png?raw=true "Promoting the application to the production slot")
 
 	_Promoting the application to the production slot_
 
 1. Wait for the promotion process to complete.
 
-	![Swapping deployments](images/swapping-deployments.png?raw=true "Swapping deployments")
+	![Swapping deployments](Images/swapping-deployments.png?raw=true "Swapping deployments")
 
 	_Swapping deployments_
 
 1. When the promotion process is complete, click "Production" to open the production site dashboard.
 
-	![Switch to production dashboard](images/switch-to-production-dashboard.png?raw=true "Switch to production dashboard")
+	![Switch to production dashboard](Images/switch-to-production-dashboard.png?raw=true "Switch to production dashboard")
 
 	_Switch to production dashboard_
 
 1. Scroll down and click the **Site URL** link to open the production site in a browser window and notice the URL in the address bar.
 
-	![Application running in the production environment](images/application-in-the-production-environ.png?raw=true "Application running in the production environment")
+	![Application running in the production environment](Images/application-in-the-production-environ.png?raw=true "Application running in the production environment")
 
 	_Application running in the production environment_
 
