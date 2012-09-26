@@ -1134,7 +1134,7 @@ The application you publish in this exercise requires both compute and storage s
 
 	_Creating a new storage_
 
-1. In the textbox labeled **Enter a URL**, enter the name for your storage account, for example, **\<yourname\>guestbook**, where \<yourname\> is a unique name. Windows Azure uses this value to generate the endpoint URLs for the storage account services. Then, select the drop down list labeled **Region/Affinity group** and pick the affinity group you created in the previous step.
+1. In the textbox labeled **URL**, enter the name for your storage account, for example, **\<yourname\>guestbook**, where \<yourname\> is a unique name. Windows Azure uses this value to generate the endpoint URLs for the storage account services. Then, select the drop down list labeled **Region/Affinity group** and pick the affinity group you created in the previous step.
 
 	![Choosing the URL of the new storage account](Images/create-storage-account-url.png?raw=true "Choosing the URL of the new storage account")
 
