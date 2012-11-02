@@ -15,15 +15,6 @@ namespace GuestBook_WebRole.Account
     {
 
 
-        /// <summary>
-        /// providerMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label providerMessage;
-
 
         /// <summary>
         /// userNameForm control.
@@ -43,15 +34,6 @@ namespace GuestBook_WebRole.Account
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox userName;
 
-
-        /// <summary>
-        /// userNameMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userNameMessage;
 
     }
 }

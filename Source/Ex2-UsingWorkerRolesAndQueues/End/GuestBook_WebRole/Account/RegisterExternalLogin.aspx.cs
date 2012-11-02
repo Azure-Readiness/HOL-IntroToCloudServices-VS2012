@@ -76,7 +76,7 @@ namespace GuestBook_WebRole.Account
                 Title = "External login failed";
                 userNameForm.Visible = false;
 
-                providerMessage.Text = String.Format("External login {0} failed,", ProviderDisplayName);
+                ModelState.AddModelError("Provider", String.Format("External login {0} failed.", ProviderDisplayName));
 
                 // To view this error, enable page tracing in web.config (<system.web><trace enabled="true"/></system.web>) and visit ~/Trace.axd
                 Trace.Warn("OpenAuth", String.Format("There was an error verifying authentication with {0})", ProviderDisplayName), authResult.Error);
@@ -122,7 +122,7 @@ namespace GuestBook_WebRole.Account
             if (!createResult.IsSuccessful)
             {
 
-                userNameMessage.Text = createResult.ErrorMessage;
+                ModelState.AddModelError("UserName", createResult.ErrorMessage);
 
             }
             else

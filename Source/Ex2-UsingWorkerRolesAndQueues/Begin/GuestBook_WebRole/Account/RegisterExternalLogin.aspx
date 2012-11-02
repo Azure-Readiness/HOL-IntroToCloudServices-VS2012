@@ -6,7 +6,7 @@
     </hgroup>
 
     
-    <asp:Label runat="server" ID="providerMessage" CssClass="field-validation-error" />
+    <asp:ModelErrorMessage runat="server" ModelStateKey="Provider" CssClass="field-validation-error" />
     
 
     <asp:PlaceHolder runat="server" ID="userNameForm">
@@ -24,7 +24,7 @@
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="userName"
                         Display="Dynamic" ErrorMessage="User name is required" ValidationGroup="NewUser" />
                     
-                    <asp:Label runat="server" ID="userNameMessage" CssClass="field-validation-error" />
+                    <asp:ModelErrorMessage runat="server" ModelStateKey="UserName" CssClass="field-validation-error" />
                     
                 </li>
             </ol>
