@@ -42,15 +42,6 @@ namespace GuestBook_WebRole.Account
         protected global::System.Web.UI.WebControls.TextBox password;
 
 
-        /// <summary>
-        /// newPasswordMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label newPasswordMessage;
-
 
         /// <summary>
         /// confirmPassword control.
@@ -70,15 +61,6 @@ namespace GuestBook_WebRole.Account
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder changePassword;
 
-
-        /// <summary>
-        /// externalLoginsList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView externalLoginsList;
 
     }
 }

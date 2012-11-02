@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="GuestBook_WebRole.Account.Manage" %>
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
-<%@ Import Namespace="Microsoft.AspNet.Membership.OpenAuth" %>
+
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
     <hgroup class="title">
         <h1><%: Title %>.</h1>
@@ -28,8 +28,8 @@
                             CssClass="field-validation-error" ErrorMessage="The password field is required."
                             Display="Dynamic" ValidationGroup="SetPassword" />
                         
-                        <asp:Label runat="server" ID="newPasswordMessage" CssClass="field-validation-error"
-                            AssociatedControlID="password" />
+                        <asp:ModelErrorMessage runat="server" ModelStateKey="NewPassword" AssociatedControlID="password"
+                            CssClass="field-validation-error" SetFocusOnError="true" />
                         
                     </li>
                     <li>
@@ -91,8 +91,9 @@
 
     <section id="externalLoginsForm">
         
-        <asp:ListView runat="server" ID="externalLoginsList" ViewStateMode="Disabled"
-            DataKeyNames="ProviderName,ProviderUserId" OnItemDeleting="externalLoginsList_ItemDeleting">
+        <asp:ListView runat="server"
+            ItemType="Microsoft.AspNet.Membership.OpenAuth.OpenAuthAccountData"
+            SelectMethod="GetExternalLogins" DeleteMethod="RemoveExternalLogin" DataKeyNames="ProviderName,ProviderUserId">
         
             <LayoutTemplate>
                 <h3>Registered external logins</h3>
@@ -106,12 +107,12 @@
             <ItemTemplate>
                 <tr>
                     
-                    <td><%# HttpUtility.HtmlEncode(Item<OpenAuthAccountData>().ProviderDisplayName) %></td>
-                    <td><%# HttpUtility.HtmlEncode(Item<OpenAuthAccountData>().ProviderUserName) %></td>
-                    <td><%# HttpUtility.HtmlEncode(ConvertToDisplayDateTime(Item<OpenAuthAccountData>().LastUsedUtc)) %></td>
+                    <td><%#: Item.ProviderDisplayName %></td>
+                    <td><%#: Item.ProviderUserName %></td>
+                    <td><%#: ConvertToDisplayDateTime(Item.LastUsedUtc) %></td>
                     <td>
                         <asp:Button runat="server" Text="Remove" CommandName="Delete" CausesValidation="false" 
-                            ToolTip='<%# "Remove this " + Item<OpenAuthAccountData>().ProviderDisplayName + " login from your account" %>'
+                            ToolTip='<%# "Remove this " + Item.ProviderDisplayName + " login from your account" %>'
                             Visible="<%# CanRemoveExternalLogins %>" />
                     </td>
                     

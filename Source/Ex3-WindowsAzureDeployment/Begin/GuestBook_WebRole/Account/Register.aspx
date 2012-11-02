@@ -33,7 +33,7 @@
                             </li>
                             <li>
                                 <asp:Label runat="server" AssociatedControlID="Email">Email address</asp:Label>
-                                <asp:TextBox runat="server" ID="Email" />
+                                <asp:TextBox runat="server" ID="Email" TextMode="Email" />
                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                                     CssClass="field-validation-error" ErrorMessage="The email address field is required." />
                             </li>

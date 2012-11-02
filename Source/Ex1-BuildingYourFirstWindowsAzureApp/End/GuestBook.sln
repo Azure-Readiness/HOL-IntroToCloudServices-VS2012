@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "GuestBook", "GuestBook\GuestBook.ccproj", "{A3DCE8EE-04C5-4AB8-8430-4EA6C214B097}"
+# Visual Studio Express 2012 for Web
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "GuestBook", "GuestBook\GuestBook.ccproj", "{D10F4B04-3CC2-4702-A814-FC5A6F62348C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestBook_WebRole", "GuestBook_WebRole\GuestBook_WebRole.csproj", "{7C143D2A-6D86-4D6F-975D-9D30B61492D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestBook_WebRole", "GuestBook_WebRole\GuestBook_WebRole.csproj", "{26F7CBD3-10B1-484E-B808-FF0A89BE29B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestBook_Data", "GuestBook_Data\GuestBook_Data.csproj", "{EA113A58-2F0F-4A6D-BABB-05F69BBF40A8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GuestBook_Data", "GuestBook_Data\GuestBook_Data.csproj", "{DAA2E839-D309-4B25-85FE-9210D65D81C4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{0E595DF4-AEC3-44C6-89F5-EBA8CD00D810}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E6BC92B6-B260-47B6-932A-26481B2ECFE3}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
@@ -20,18 +20,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A3DCE8EE-04C5-4AB8-8430-4EA6C214B097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3DCE8EE-04C5-4AB8-8430-4EA6C214B097}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3DCE8EE-04C5-4AB8-8430-4EA6C214B097}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3DCE8EE-04C5-4AB8-8430-4EA6C214B097}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7C143D2A-6D86-4D6F-975D-9D30B61492D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7C143D2A-6D86-4D6F-975D-9D30B61492D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7C143D2A-6D86-4D6F-975D-9D30B61492D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7C143D2A-6D86-4D6F-975D-9D30B61492D6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EA113A58-2F0F-4A6D-BABB-05F69BBF40A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EA113A58-2F0F-4A6D-BABB-05F69BBF40A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EA113A58-2F0F-4A6D-BABB-05F69BBF40A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EA113A58-2F0F-4A6D-BABB-05F69BBF40A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D10F4B04-3CC2-4702-A814-FC5A6F62348C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D10F4B04-3CC2-4702-A814-FC5A6F62348C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D10F4B04-3CC2-4702-A814-FC5A6F62348C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D10F4B04-3CC2-4702-A814-FC5A6F62348C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F7CBD3-10B1-484E-B808-FF0A89BE29B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F7CBD3-10B1-484E-B808-FF0A89BE29B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F7CBD3-10B1-484E-B808-FF0A89BE29B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F7CBD3-10B1-484E-B808-FF0A89BE29B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA2E839-D309-4B25-85FE-9210D65D81C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA2E839-D309-4B25-85FE-9210D65D81C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA2E839-D309-4B25-85FE-9210D65D81C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA2E839-D309-4B25-85FE-9210D65D81C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

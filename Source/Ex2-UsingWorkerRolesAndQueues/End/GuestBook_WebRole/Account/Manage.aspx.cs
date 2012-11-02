@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using System.Web.UI.WebControls;
-
 using Microsoft.AspNet.Membership.OpenAuth;
 
 namespace GuestBook_WebRole.Account
@@ -49,13 +47,6 @@ namespace GuestBook_WebRole.Account
                 }
             }
 
-
-            // Data-bind the list of external accounts
-            var accounts = OpenAuth.GetAccountsForUser(User.Identity.Name);
-            CanRemoveExternalLogins = CanRemoveExternalLogins || accounts.Count() > 1;
-            externalLoginsList.DataSource = accounts;
-            externalLoginsList.DataBind();
-
         }
 
         protected void setPassword_Click(object sender, EventArgs e)
@@ -70,26 +61,26 @@ namespace GuestBook_WebRole.Account
                 else
                 {
 
-                    newPasswordMessage.Text = result.ErrorMessage;
+                    ModelState.AddModelError("NewPassword", result.ErrorMessage);
 
                 }
             }
         }
 
 
-        protected void externalLoginsList_ItemDeleting(object sender, ListViewDeleteEventArgs e)
+        public IEnumerable<OpenAuthAccountData> GetExternalLogins()
         {
-            var providerName = (string)e.Keys["ProviderName"];
-            var providerUserId = (string)e.Keys["ProviderUserId"];
+            var accounts = OpenAuth.GetAccountsForUser(User.Identity.Name);
+            CanRemoveExternalLogins = CanRemoveExternalLogins || accounts.Count() > 1;
+            return accounts;
+        }
+
+        public void RemoveExternalLogin(string providerName, string providerUserId)
+        {
             var m = OpenAuth.DeleteAccount(User.Identity.Name, providerName, providerUserId)
                 ? "?m=RemoveLoginSuccess"
                 : String.Empty;
             Response.Redirect("~/Account/Manage.aspx" + m);
-        }
-
-        protected T Item<T>() where T : class
-        {
-            return GetDataItem() as T ?? default(T);
         }
 
 

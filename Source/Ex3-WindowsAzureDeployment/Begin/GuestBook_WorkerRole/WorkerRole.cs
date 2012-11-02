@@ -122,9 +122,9 @@ namespace GuestBook_WorkerRole
                     {
                         Trace.TraceError(
                           "Storage services initialization failure. "
-                        + "Check your storage account configuration settings. If running locally, "
-                        + "ensure that the Development Storage service is running. Message: '{0}'",
-                        e.Message);
+                          + "Check your storage account configuration settings. If running locally, "
+                          + "ensure that the Development Storage service is running. Message: '{0}'",
+                          e.Message);
                         System.Threading.Thread.Sleep(5000);
                     }
                     else

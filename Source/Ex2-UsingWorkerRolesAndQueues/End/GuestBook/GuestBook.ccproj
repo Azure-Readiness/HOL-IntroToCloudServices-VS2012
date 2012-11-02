@@ -4,8 +4,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>1.7</ProductVersion>
-    <ProjectGuid>a3dce8ee-04c5-4ab8-8430-4ea6c214b097</ProjectGuid>
+    <ProductVersion>1.8</ProductVersion>
+    <ProjectGuid>d10f4b04-3cc2-4702-a814-fc5a6f62348c</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GuestBook</RootNamespace>
@@ -39,7 +39,7 @@
   <ItemGroup>
     <ProjectReference Include="..\GuestBook_WebRole\GuestBook_WebRole.csproj">
       <Name>GuestBook_WebRole</Name>
-      <Project>{7c143d2a-6d86-4d6f-975d-9d30b61492d6}</Project>
+      <Project>{26f7cbd3-10b1-484e-b808-ff0a89be29b0}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <RoleName>GuestBook_WebRole</RoleName>
@@ -47,7 +47,7 @@
     </ProjectReference>
     <ProjectReference Include="..\GuestBook_WorkerRole\GuestBook_WorkerRole.csproj">
       <Name>GuestBook_WorkerRole</Name>
-      <Project>{99267d38-2e8a-4afe-bb7d-ca2c2f6d0d67}</Project>
+      <Project>{349d3ddc-89fc-49df-af98-0e3d60dcb37c}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
       <RoleName>GuestBook_WorkerRole</RoleName>
@@ -57,7 +57,7 @@
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
-    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\1.7\</CloudExtensionsDir>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\1.8\</CloudExtensionsDir>
   </PropertyGroup>
   <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
 </Project>
