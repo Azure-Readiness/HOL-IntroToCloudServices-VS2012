@@ -1,5 +1,5 @@
 ﻿<a name="HOLTitle"></a>
-# Introduction to Cloud Services #
+# Introduction to Cloud Services - for Visual Studio 2012 #
 
 ---
 <a name="Overview"></a>

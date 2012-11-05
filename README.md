@@ -1,4 +1,4 @@
-# Introduction to Cloud Services #
+# Introduction to Cloud Services - for Visual Studio 2012 #
 
 ## Hands-on Lab ##
 
