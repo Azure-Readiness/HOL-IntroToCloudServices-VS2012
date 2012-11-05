@@ -11,7 +11,7 @@
   </Author>
   <Description>In this hands-on lab, you will explore the basic elements of a Windows Azure Cloud Service by creating a simple GuestBook application that demonstrates many features of web and worker roles, blob storage, table storage, and queues. </Description>
   <Document ConversionType="Html">.\HOL.md</Document>
-  <Title>Introduction to Cloud Services</Title>
+  <Title>Introduction to Cloud Services - for Visual Studio 2012</Title>
   <Version>3.1.2</Version>
   <Source>.\Source</Source>
   <DependencyChecker>.\source\Setup\Dependencies.depi</DependencyChecker>
