@@ -16,7 +16,7 @@
   <Source>.\Source</Source>
   <DependencyChecker>.\source\Setup\Dependencies.depi</DependencyChecker>
   <CustomProperties>
-    <Property Name="ContentTag" Value="1.8" />
+    <Property Name="ContentTag" Value="2.0" />
     <Property Name="ContentType" Value="VS2012" />
     <Property Name="GitHubRepository" Value="https://github.com/WindowsAzure-TrainingKit/HOL-IntroToCloudServices-VS2012" />
   </CustomProperties>
