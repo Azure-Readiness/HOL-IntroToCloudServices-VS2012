@@ -33,17 +33,12 @@ In this hands-on lab, you will learn how to:
 
 The following is required to complete this hands-on lab:
 
-- IIS 7 (with ASP.NET, WCF HTTP Activation)
 - [Microsoft Visual Studio 2012 Express for Web][1]
 - [Windows Azure Tools for Microsoft Visual Studio 2.0][2]
-- [SQL Server 2012 Express Edition (or higher)][3]
 - A Windows Azure subscription - [sign up for a free trial](http://aka.ms/WATK-FreeTrial)
 
 [1]: http://msdn.microsoft.com/vstudio/products/
 [2]: http://www.microsoft.com/windowsazure/sdk/
-[3]: http://www.microsoft.com/express/sql/download/
-
->**Note:** This lab was designed for Windows 8
 
 <a name="Setup"/>
 ### Setup ###
