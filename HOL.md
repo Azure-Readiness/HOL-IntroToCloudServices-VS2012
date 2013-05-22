@@ -777,7 +777,7 @@ Among the features available in the Windows Azure Tools for Microsoft Visual Stu
 
 	_Viewing the contents of a blob container in Visual Studio_
 
-	> **Note**: Each blob in blob storage has an associated content type. To display the contents of the blob, right click the corresponding entry in the container listing and click **Save as* to save the image.
+	> **Note**: Each blob in blob storage has an associated content type. To display the contents of the blob, right click the corresponding entry in the container listing and click **Save as** to save the image.
 
 1. Press **SHIFT + F5** to stop the debugger and shut down the deployment in the development fabric.
 
@@ -1094,25 +1094,25 @@ The application you publish in this exercise requires both compute and storage s
 
 1. In the Create Virtual Network dialog box complete the **Name** and in **Affinity group** select _Create a new affinity group_. Select the desired region and complete the **Affinity Group Name**. Click the arrow on the bottom of the dialog box.
 
-	![Create Virtual Network dialog box](images/create-virtual-network-dialog-box.png?raw=true "Create Virtual Network dialog box")
+	![Create Virtual Network dialog box](Images/create-virtual-network-dialog-box.png?raw=true "Create Virtual Network dialog box")
 
 	_Create Virtual Network dialog box_
 
 1. Leave the DNS Servers empty and click the arrow on the bottom of the dialog box.
 
-	![DNS Servers and VPN Connectivity](images/dns-servers-and-vpn-connectivity.png?raw=true "DNS Servers and VPN Connectivity")
+	![DNS Servers and VPN Connectivity](Images/dns-servers-and-vpn-connectivity.png?raw=true "DNS Servers and VPN Connectivity")
 
 	_DNS Servers and VPN Connectivity_
 
 1. In the Virtual Network Address Spaces leave the default value and finish the wizard.
 
-	![Virtual Network Address Spaces](images/virtual-network-address-spaces.png?raw=true "Virtual Network Address Spaces")
+	![Virtual Network Address Spaces](Images/virtual-network-address-spaces.png?raw=true "Virtual Network Address Spaces")
 
 	_Virtual Network Address Spaces_
 
 1. In the Network Tab, wait until the Network status is Created.
 
-	![Virtual Network Created](images/virtual-network-created.png?raw=true "Virtual Network Created")
+	![Virtual Network Created](Images/virtual-network-created.png?raw=true "Virtual Network Created")
 
 	_Virtual Network Created_
 
@@ -1125,7 +1125,7 @@ The application you publish in this exercise requires both compute and storage s
 
 1. Go to **Compute | Cloud Service | Quick Create**. In the textbox labeled **URL**, enter the name for your cloud service, for example, **\<yourname\>guestbook**, where _\<yourname\>_ is a unique name. Windows Azure uses this value to generate the endpoint URLs for the storage account services. Then, select the drop down list labeled **Region/Affinity group** and pick the affinity group you created in the previous step. Click **Create cloud service** to start creating it.
 
-	![New Cloud Service](images/new-cloud-service.png?raw=true "New Cloud Service")
+	![New Cloud Service](Images/new-cloud-service.png?raw=true "New Cloud Service")
 
 	_New Cloud Service_
 
@@ -1192,7 +1192,7 @@ Alternatively, you may continue with the solution that you obtained after comple
 
 1. In the **Create Storage Connection String** dialog box, select **Manually entered credentials** and complete the **Account name** and **Account key** of the storage account you've created in the previous task. Then click **OK** to create the storage account.
 
-	![Create Storage Connection String](images/create-storage-connection-string.png?raw=true "Create Storage Connection String")
+	![Create Storage Connection String](Images/create-storage-connection-string.png?raw=true "Create Storage Connection String")
 
 	_Create Storage Connection String_
 
