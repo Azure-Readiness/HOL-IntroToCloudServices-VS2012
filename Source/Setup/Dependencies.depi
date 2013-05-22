@@ -11,7 +11,7 @@
 		<dependency 
 			hint="VWDOrVs11AzurePack" 
 			name="Windows Azure SDK for .NET" 
-			helpLink="" 
+			helpLink="http://www.microsoft.com/windowsazure/sdk/"
 			type="WebPI" />
     </dependencies>
   <setupCommands>

@@ -15,10 +15,10 @@ namespace GuestBook_WebRole
     {
         void Application_Start(object sender, EventArgs e)
         {
-            Microsoft.WindowsAzure.CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
-            {
-                configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
-            });
+            // Code that runs on application startup
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterOpenAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)

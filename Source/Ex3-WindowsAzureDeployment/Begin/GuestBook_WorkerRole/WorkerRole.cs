@@ -7,12 +7,14 @@ using System.Threading;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.StorageClient;
+using Microsoft.WindowsAzure.Storage;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using GuestBook_Data;
+using Microsoft.WindowsAzure.Storage.Queue;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 namespace GuestBook_WorkerRole
 {
@@ -35,25 +37,24 @@ namespace GuestBook_WorkerRole
                     {
                         // parse message retrieved from queue
                         var messageParts = msg.AsString.Split(new char[] { ',' });
-                        var imageBlobUri = messageParts[0];
+                        var imageBlobName = messageParts[0];
                         var partitionKey = messageParts[1];
                         var rowkey = messageParts[2];
-                        Trace.TraceInformation("Processing image in blob '{0}'.", imageBlobUri);
+                        Trace.TraceInformation("Processing image in blob '{0}'.", imageBlobName);
 
-                        string thumbnailBlobUri = System.Text.RegularExpressions.Regex.Replace(imageBlobUri, "([^\\.]+)(\\.[^\\.]+)?$", "$1-thumb$2");
+                        string thumbnailName = System.Text.RegularExpressions.Regex.Replace(imageBlobName, "([^\\.]+)(\\.[^\\.]+)?$", "$1-thumb$2");
 
-                        CloudBlob inputBlob = this.container.GetBlobReference(imageBlobUri);
-                        CloudBlob outputBlob = this.container.GetBlobReference(thumbnailBlobUri);
+                        CloudBlockBlob inputBlob = this.container.GetBlockBlobReference(imageBlobName);
+                        CloudBlockBlob outputBlob = this.container.GetBlockBlobReference(thumbnailName);
 
-                        using (BlobStream input = inputBlob.OpenRead())
-                        using (BlobStream output = outputBlob.OpenWrite())
+                        using (Stream input = inputBlob.OpenRead())
+                        using (Stream output = outputBlob.OpenWrite())
                         {
                             this.ProcessImage(input, output);
 
                             // commit the blob and set its properties
-                            output.Commit();
                             outputBlob.Properties.ContentType = "image/jpeg";
-                            outputBlob.SetProperties();
+                            string thumbnailBlobUri = outputBlob.Uri.ToString();
 
                             // update the entry in table storage to point to the thumbnail
                             GuestBookDataSource ds = new GuestBookDataSource();
@@ -70,12 +71,13 @@ namespace GuestBook_WorkerRole
                         System.Threading.Thread.Sleep(1000);
                     }
                 }
-                catch (StorageClientException e)
+                catch (StorageException e)
                 {
                     Trace.TraceError("Exception when processing queue item. Message: '{0}'", e.Message);
                     System.Threading.Thread.Sleep(5000);
                 }
             }
+
         }
 
         public override bool OnStart()
@@ -83,12 +85,7 @@ namespace GuestBook_WorkerRole
             // Set the maximum number of concurrent connections 
             ServicePointManager.DefaultConnectionLimit = 12;
 
-            // read storage account configuration settings
-            CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
-            {
-                configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
-            });
-            var storageAccount = CloudStorageAccount.FromConfigurationSetting("DataConnectionString");
+            var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
 
             // initialize blob storage
             CloudBlobClient blobStorage = storageAccount.CreateCloudBlobClient();
@@ -106,19 +103,22 @@ namespace GuestBook_WorkerRole
                 try
                 {
                     // create the blob container and allow public access
-                    this.container.CreateIfNotExist();
+                    this.container.CreateIfNotExists();
                     var permissions = this.container.GetPermissions();
                     permissions.PublicAccess = BlobContainerPublicAccessType.Container;
                     this.container.SetPermissions(permissions);
 
                     // create the message queue(s)
-                    this.queue.CreateIfNotExist();
+                    this.queue.CreateIfNotExists();
 
                     storageInitialized = true;
                 }
-                catch (StorageClientException e)
+                catch (StorageException e)
                 {
-                    if (e.ErrorCode == StorageErrorCode.TransportError)
+                    var requestInformation = e.RequestInformation;
+                    var errorCode = requestInformation.ExtendedErrorInformation.ErrorCode;//errorCode = ContainerAlreadyExists
+                    var statusCode = (System.Net.HttpStatusCode)requestInformation.HttpStatusCode;//requestInformation.HttpStatusCode = 409, statusCode = Conflict
+                    if (statusCode == HttpStatusCode.NotFound)
                     {
                         Trace.TraceError(
                           "Storage services initialization failure. "
@@ -135,6 +135,7 @@ namespace GuestBook_WorkerRole
             }
 
             return base.OnStart();
+
         }
 
         public void ProcessImage(Stream input, Stream output)
@@ -178,5 +179,6 @@ namespace GuestBook_WorkerRole
                 }
             }
         }
+
     }
 }
