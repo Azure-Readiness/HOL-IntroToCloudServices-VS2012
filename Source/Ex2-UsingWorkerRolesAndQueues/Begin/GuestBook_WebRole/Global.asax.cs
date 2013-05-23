@@ -6,8 +6,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using GuestBook_WebRole;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace GuestBook_WebRole
 {

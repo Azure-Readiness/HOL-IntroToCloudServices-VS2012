@@ -1,5 +1,5 @@
 ﻿<a name="HOLTitle"></a>
-# Introduction to Cloud Services - for Visual Studio 2012 #
+# Introduction to Cloud Services #
 
 ---
 <a name="Overview"></a>
@@ -58,7 +58,7 @@ In order to execute the exercises in this hands-on lab you need to set up your e
 <a name="UsingCodeSnippets"/>
 ### Using the Code Snippets ###
 
-Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of that code is provided as Visual Studio Code Snippets, which you can use from within Visual Studio 2012 to avoid having to add it manually. 
+Throughout the lab document, you will be instructed to insert code blocks. For your convenience, most of that code is provided as Visual Studio Code Snippets, which you can use from within Visual Studio 2012 to avoid having to add it manually.
 
 ---
 <a name="Exercises"/>
@@ -92,7 +92,7 @@ In this task, you create a new Cloud Service project in Visual Studio.
 
 1. If the **User Account Control** dialog appears, click **Yes**.
 
-1. From the **File** menu, choose **New** and then **Project**.  
+1. From the **File** menu, choose **New Project**.  
 
 1. In the **New Project dialog**, expand **Visual C#** in the **Installed** list and select **Cloud**. Choose the **Windows Azure Cloud Service** template, set the Name of the project to **GuestBook**, the location to **\Source\Ex1-BuildingYourFirstWindowsAzureApp**, change the solution name to **Begin**, and ensure that **Create directory for solution** is checked. Click **OK** to create the project.
 
@@ -116,7 +116,7 @@ In this task, you create a new Cloud Service project in Visual Studio.
 
 	>You can create many configuration files, each one intended for a specific scenario such as production, development, or QA, and select which to use when publishing the application. By default, Visual Studio creates two files **ServiceConfiguration.Local.cscfg** and **ServiceConfiguration.Cloud.cscfg**.
 
-	>The Roles node in the cloud service project enables you to configure what roles the service includes (web, worker or both) as well as which projects to associate with these roles. Adding and configuring roles through the Roles node will update the **ServiceDefinition.csdef** and **ServiceConfiguration.cscfg** files.
+	>The Roles node in the cloud service project enables you to configure which roles the service includes (web, worker or both) as well as which projects to associate with these roles. Adding and configuring roles through the Roles node will update the **ServiceDefinition.csdef** and **ServiceConfiguration.cscfg** files.
 
 	>The second project, named **GuestBook_WebRole**, is a standard ASP.NET Web Application project template modified for the Windows Azure environment. It contains an additional class that provides the entry point for the web role and contains methods to manage the initialization, starting, and stopping of the role.
 
@@ -136,7 +136,7 @@ In order to use the WCF Data Services Client Library to access data in table sto
 
 In this task, you model the schema of the entities stored by the GuestBook application and create a context class to use WCF Data Services to access the information in table storage. To complete the task, you create an object that can be data bound to data controls in ASP.NET and implements the basic data access operations: read, update, and delete.
 
-1. Create a new project for the schema classes. To create the project, in the **File** menu, point to **Add** and then select **New Project**.
+1. Create a new project for the schema classes. To create the project, right-click the **Begin** solution, point to **Add** and then select **New Project**.
 
 1. In the **Add New Project** dialog, expand the language of your choice under the **Installed** tree view, select the **Windows** category, and then choose the **Class Library** project template. Set the name to _GuestBook_Data_, leave the proposed location inside the solution folder unchanged, and then click **OK**.
 
@@ -179,7 +179,7 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 
 	>Together, the **PartitionKey** and **RowKey** define the **DataServiceKey** that uniquely identifies every entity within a table.
 
-1. Add a default constructor to the **GuestBookEntry** class that initializes its **PartitionKey** and RowKey properties.
+1. Add a default constructor to the **GuestBookEntry** class that initializes its **PartitionKey** and **RowKey** properties.
 
 	(Code Snippet – _Introduction to Cloud Services - Ex1 GuestBookEntry constructor_ – CS)
 
@@ -236,10 +236,9 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	public class GuestBookDataContext 
 	  :  Microsoft.WindowsAzure.Storage.Table.DataServices.TableServiceContext
 	{
-	   public GuestBookDataContext(Microsoft.WindowsAzure.Storage.Table.CloudTableClient client) : base(client)
-	  {
-	  }
-        
+		public GuestBookDataContext(Microsoft.WindowsAzure.Storage.Table.CloudTableClient client) : base(client)
+		{
+		}        
 	}
 	````
 
@@ -254,15 +253,15 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	public class GuestBookDataContext 
 	  :  Microsoft.WindowsAzure.Storage.Table.DataServices.TableServiceContext
 	{
-	  ...
-	
-	  public IQueryable<GuestBookEntry> GuestBookEntry
-	  {
-	    get
-	    {
-			return this.CreateQuery<GuestBookEntry>("GuestBookEntry");
-	    }
-	  }
+		...
+
+		public IQueryable<GuestBookEntry> GuestBookEntry
+		{
+			get
+			{
+				return this.CreateQuery<GuestBookEntry>("GuestBookEntry");
+			}
+		}
 	}
 	````
 	
@@ -272,7 +271,6 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 
 1. In the new class file, add the following namespace declarations to import the types contained in the **Microsoft.WindowsAzure**, **Microsoft.WindowsAzure.Storage** and **Microsoft.WindowsAzure.Storage.Table** namespaces.
 
-	<!-- mark:1-2 -->
 	````C#
 	using Microsoft.WindowsAzure;
 	using Microsoft.WindowsAzure.Storage;
@@ -287,8 +285,8 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	````C#
 	public class GuestBookDataSource
 	{
-	   private static CloudStorageAccount storageAccount;
-	   private GuestBookDataContext context;
+		private static CloudStorageAccount storageAccount;
+		private GuestBookDataContext context;
 	}
 	````
 
@@ -296,20 +294,20 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 
 	(Code Snippet – _Introduction to Cloud Services - Ex1 GuestBookDataSource Static Constructor_ – CS)
 	
-	<!-- mark:5-13 -->
+	<!-- mark:5-12 -->
 	````C#
 	public class GuestBookDataSource
 	{
-	  ...
-	
-	     static GuestBookDataSource()
-        {
-            storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+		...
 
-            CloudTableClient cloudTableClient = storageAccount.CreateCloudTableClient();
-            CloudTable table = cloudTableClient.GetTableReference("GuestBookEntity");
-            table.CreateIfNotExists();
-        }
+		static GuestBookDataSource()
+		{
+			storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+
+			CloudTableClient cloudTableClient = storageAccount.CreateCloudTableClient();
+			CloudTable table = cloudTableClient.GetTableReference("GuestBookEntry");
+			table.CreateIfNotExists();
+		}
 	}
 	````
 		
@@ -323,12 +321,12 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	```` C#
 	public class GuestBookDataSource
 	{
-	  ...
-	
-	  public GuestBookDataSource()
-      {
-            this.context = new GuestBookDataContext(storageAccount.CreateCloudTableClient());
-      }
+		...
+
+		public GuestBookDataSource()
+		{
+			this.context = new GuestBookDataContext(storageAccount.CreateCloudTableClient());
+		}
 	}
 	````
 
@@ -340,17 +338,17 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	````C#
 	public class GuestBookDataSource
 	{
-	  ...
-	
-	  public IEnumerable<GuestBookEntry> GetGuestBookEntries()
-	  {
+		...
+
+		public IEnumerable<GuestBookEntry> GetGuestBookEntries()
+		{
 			CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-			CloudTable table = tableClient.GetTableReference("GuestBookEntity");
+			CloudTable table = tableClient.GetTableReference("GuestBookEntry");
 
 			TableQuery<GuestBookEntry> query = new TableQuery<GuestBookEntry>().Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, DateTime.UtcNow.ToString("MMddyyyy")));
 
 			return table.ExecuteQuery(query);
-	  }
+		}
 	}
 	````
 
@@ -364,14 +362,14 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	````C#
 	public class GuestBookDataSource
 	{
-	  ...
-	
-	    public void AddGuestBookEntry(GuestBookEntry newItem)
-        {
-            TableOperation operation = TableOperation.Insert(newItem);
-            CloudTable table = context.ServiceClient.GetTableReference("GuestBookEntity");
-            table.Execute(operation);
-        }
+		...
+
+		public void AddGuestBookEntry(GuestBookEntry newItem)
+		{
+			TableOperation operation = TableOperation.Insert(newItem);
+			CloudTable table = context.ServiceClient.GetTableReference("GuestBookEntry");
+			table.Execute(operation);
+		}
 	}
 	````
 
@@ -385,24 +383,24 @@ In this task, you model the schema of the entities stored by the GuestBook appli
 	````C#
 	public class GuestBookDataSource
 	{
-	  ...
+		...
 
-	    public void UpdateImageThumbnail(string partitionKey, string rowKey, string thumbUrl)
-        {
-            CloudTable table = context.ServiceClient.GetTableReference("GuestBookEntity");
-            TableOperation retrieveOperation = TableOperation.Retrieve<GuestBookEntry>(partitionKey, rowKey);
+		public void UpdateImageThumbnail(string partitionKey, string rowKey, string thumbUrl)
+		{
+			CloudTable table = context.ServiceClient.GetTableReference("GuestBookEntry");
+			TableOperation retrieveOperation = TableOperation.Retrieve<GuestBookEntry>(partitionKey, rowKey);
 
-            TableResult retrievedResult = table.Execute(retrieveOperation);
-            GuestBookEntry updateEntity = (GuestBookEntry)retrievedResult.Result;
+			TableResult retrievedResult = table.Execute(retrieveOperation);
+			GuestBookEntry updateEntity = (GuestBookEntry)retrievedResult.Result;
 
-            if (updateEntity != null)
-            {
-                updateEntity.ThumbnailUrl = thumbUrl;
+			if (updateEntity != null)
+			{
+				updateEntity.ThumbnailUrl = thumbUrl;
 
-                TableOperation replaceOperation = TableOperation.Replace(updateEntity);
-                table.Execute(replaceOperation);
-            }
-        } 
+				TableOperation replaceOperation = TableOperation.Replace(updateEntity);
+				table.Execute(replaceOperation);
+			}
+		} 
 	}
 	````
 
@@ -449,11 +447,11 @@ In this task, you update the web role project that you generated in Task 1, when
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	   private static bool storageInitialized = false;
-	   private static object gate = new object();
-	   private static CloudBlobClient blobStorage;	
-	
-	   ...
+		private static bool storageInitialized = false;
+		private static object gate = new object();
+		private static CloudBlobClient blobStorage;	
+
+		...
 	}
 	````
 
@@ -465,26 +463,26 @@ In this task, you update the web role project that you generated in Task 1, when
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  ...
-	
-	  protected void SignButton_Click(object sender, EventArgs e)
-	  {
+		...
+
+		protected void SignButton_Click(object sender, EventArgs e)
+		{
 			if (this.FileUpload1.HasFile)
 			{
-				 this.InitializeStorage();
+				this.InitializeStorage();
 
-				 // upload the image to blob storage
-				 string uniqueBlobName = string.Format("guestbookpics/image_{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(this.FileUpload1.FileName));
-				 CloudBlockBlob blob = blobStorage.GetContainerReference("guestbookpics").GetBlockBlobReference(uniqueBlobName);
-				 blob.Properties.ContentType = this.FileUpload1.PostedFile.ContentType;
-				 blob.UploadFromStream(this.FileUpload1.FileContent);
-				 System.Diagnostics.Trace.TraceInformation("Uploaded image '{0}' to blob storage as '{1}'", this.FileUpload1.FileName, uniqueBlobName);
+				// upload the image to blob storage
+				string uniqueBlobName = string.Format("guestbookpics/image_{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(this.FileUpload1.FileName));
+				CloudBlockBlob blob = blobStorage.GetContainerReference("guestbookpics").GetBlockBlobReference(uniqueBlobName);
+				blob.Properties.ContentType = this.FileUpload1.PostedFile.ContentType;
+				blob.UploadFromStream(this.FileUpload1.FileContent);
+				System.Diagnostics.Trace.TraceInformation("Uploaded image '{0}' to blob storage as '{1}'", this.FileUpload1.FileName, uniqueBlobName);
 
-				 // create a new entry in table storage
-				 GuestBookEntry entry = new GuestBookEntry() { GuestName = this.NameTextBox.Text, Message = this.MessageTextBox.Text, PhotoUrl = blob.Uri.ToString(), ThumbnailUrl = blob.Uri.ToString() };
-				 GuestBookDataSource ds = new GuestBookDataSource();
-				 ds.AddGuestBookEntry(entry);
-				 System.Diagnostics.Trace.TraceInformation("Added entry {0}-{1} in table storage for guest '{2}'", entry.PartitionKey, entry.RowKey, entry.GuestName);
+				// create a new entry in table storage
+				GuestBookEntry entry = new GuestBookEntry() { GuestName = this.NameTextBox.Text, Message = this.MessageTextBox.Text, PhotoUrl = blob.Uri.ToString(), ThumbnailUrl = blob.Uri.ToString() };
+				GuestBookDataSource ds = new GuestBookDataSource();
+				ds.AddGuestBookEntry(entry);
+				System.Diagnostics.Trace.TraceInformation("Added entry {0}-{1} in table storage for guest '{2}'", entry.PartitionKey, entry.RowKey, entry.GuestName);
 			}
 
 			this.NameTextBox.Text = string.Empty;
@@ -510,14 +508,14 @@ In this task, you update the web role project that you generated in Task 1, when
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  ...
-	
-	  protected void Timer1_Tick(object sender, EventArgs e)
-	  {
-	     this.DataList1.DataBind();
-	  }
-	
-	  ...
+		...
+
+		protected void Timer1_Tick(object sender, EventArgs e)
+		{
+			this.DataList1.DataBind();
+		}
+
+		...
 	}
 	````
 
@@ -531,17 +529,17 @@ In this task, you update the web role project that you generated in Task 1, when
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  ...
-	
-	  protected void Page_Load(object sender, EventArgs e)
-	  {
-	    if (!Page.IsPostBack)
-	    {
-	      this.Timer1.Enabled = true;
-	    }
-	  }
-	
-	  ...
+		...
+
+		protected void Page_Load(object sender, EventArgs e)
+		{
+			if (!Page.IsPostBack)
+			{
+				this.Timer1.Enabled = true;
+			}
+		}
+
+		...
 	}
 	````
 
@@ -553,47 +551,47 @@ In this task, you update the web role project that you generated in Task 1, when
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  ...
-	
-	  private void InitializeStorage()
-	  {
-	    if (storageInitialized)
+		...
+
+		private void InitializeStorage()
 		{
-			 return;
+			if (storageInitialized)
+			{
+				return;
+			}
+
+			lock (gate)
+			{
+				if (storageInitialized)
+				{
+					return;
+				}
+
+				try
+				{
+					// read account configuration settings
+					var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
+
+					// create blob container for images
+					blobStorage = storageAccount.CreateCloudBlobClient();
+					CloudBlobContainer container = blobStorage.GetContainerReference("guestbookpics");
+					container.CreateIfNotExists();
+
+					// configure container for public access
+					var permissions = container.GetPermissions();
+					permissions.PublicAccess = BlobContainerPublicAccessType.Container;
+					container.SetPermissions(permissions);
+				}
+				catch (WebException)
+				{
+					throw new WebException("Storage services initialization failure. "
+						  + "Check your storage account configuration settings. If running locally, "
+						  + "ensure that the Development Storage service is running.");
+				}
+
+				storageInitialized = true;
+			}
 		}
-
-		lock (gate)
-		{
-			 if (storageInitialized)
-			 {
-				  return;
-			 }
-
-			 try
-			 {
-				  // read account configuration settings
-				  var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
-
-				  // create blob container for images
-				  blobStorage = storageAccount.CreateCloudBlobClient();
-				  CloudBlobContainer container = blobStorage.GetContainerReference("guestbookpics");
-				  container.CreateIfNotExists();
-
-				  // configure container for public access
-				  var permissions = container.GetPermissions();
-				  permissions.PublicAccess = BlobContainerPublicAccessType.Container;
-				  container.SetPermissions(permissions);
-			 }
-			 catch (WebException)
-			 {
-				  throw new WebException("Storage services initialization failure. "
-					  + "Check your storage account configuration settings. If running locally, "
-					  + "ensure that the Development Storage service is running.");
-			 }
-
-			 storageInitialized = true;
-		}
-	  }
 	}
 	````
 
@@ -636,12 +634,12 @@ In preparation for the next exercise, you now update the front-end web role to d
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  private static bool storageInitialized = false;
-	  private static object gate = new object();
-	  private static CloudBlobClient blobStorage;
-	  private static CloudQueueClient queueStorage;
-	
-	  ...
+		private static bool storageInitialized = false;
+		private static object gate = new object();
+		private static CloudBlobClient blobStorage;
+		private static CloudQueueClient queueStorage;
+
+		...
 	}
 	````
 
@@ -653,24 +651,28 @@ In preparation for the next exercise, you now update the front-end web role to d
 	````C#
 	public partial class _Default : System.Web.UI.Page
 	{
-	  ...
+		...
 
-	  private void InitializeStorage()
-	  {
-	    ...
-	
-	    try
-	    {
-	      ...
-	
-	      // create queue to communicate with worker role
-	      queueStorage = storageAccount.CreateCloudQueueClient();
-	      CloudQueue queue = queueStorage.GetQueueReference("guestthumbs");
-	      queue.CreateIfNotExists();
-	    }
-	    catch (WebException)
-	    {
-	      ...
+		private void InitializeStorage()
+		{
+			...
+
+			try
+			{
+				...
+
+				// create queue to communicate with worker role
+				queueStorage = storageAccount.CreateCloudQueueClient();
+				CloudQueue queue = queueStorage.GetQueueReference("guestthumbs");
+				queue.CreateIfNotExists();
+			}
+			catch (WebException)
+			{
+				...
+			}
+
+			...
+		}
 	}
 	````
 
@@ -684,21 +686,21 @@ In preparation for the next exercise, you now update the front-end web role to d
 	````C#
 	protected void SignButton_Click(object sender, EventArgs e)
 	{
-	  if (FileUpload1.HasFile)
-	  {
-	    ...
-	
-	    // queue a message to process the image
-		 var queue = queueStorage.GetQueueReference("guestthumbs");
-		 var message = new CloudQueueMessage(string.Format("{0},{1},{2}", uniqueBlobName, entry.PartitionKey, entry.RowKey));
-		 queue.AddMessage(message);
-		 System.Diagnostics.Trace.TraceInformation("Queued message to process blob '{0}'", uniqueBlobName);
-	  }
-	
-	  NameTextBox.Text = string.Empty;
-	  MessageTextBox.Text = string.Empty;
-	
-	  DataList1.DataBind();
+		if (this.FileUpload1.HasFile)
+		{
+			...
+
+			// queue a message to process the image
+			var queue = queueStorage.GetQueueReference("guestthumbs");
+			var message = new CloudQueueMessage(string.Format("{0},{1},{2}", uniqueBlobName, entry.PartitionKey, entry.RowKey));
+			queue.AddMessage(message);
+			System.Diagnostics.Trace.TraceInformation("Queued message to process blob '{0}'", uniqueBlobName);
+		}
+
+		this.NameTextBox.Text = string.Empty;
+		this.MessageTextBox.Text = string.Empty;
+
+		this.DataList1.DataBind();
 	}
 	````
 
@@ -789,7 +791,7 @@ In this task, you add a worker role project to the solution and update it so tha
 
 1. If not already open, launch **Microsoft Visual Studio 2012 Express for Web** as administrator by right clicking the **Microsoft Visual Studio 2012 Express for Web** shortcut and choosing **Run as administrator**. 
 
-1. In the **File** menu, choose **Open** and then **Project/Solution**. In the **Open Project** dialog, browse to **\Source\Ex2-UsingWorkerRolesAndQueues\Begin**, select **GuestBook.sln** and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
+1. In the **File** menu, choose **Open Project**. In the **Open Project** dialog, browse to **\Source\Ex2-UsingWorkerRolesAndQueues\Begin**, select **GuestBook.sln** and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
 1. In **Solution Explorer**, right-click the Roles node in the **GuestBook** project and then select **Add** | **New Worker Role Project**.
 
@@ -799,7 +801,7 @@ In this task, you add a worker role project to the solution and update it so tha
 
 	_Adding a worker role project to the solution_
 
-1. In the new worker role project, add a reference to the data model project. In **Solution Explorer**, right-click the **GuestBook_WorkerRole** project and select **Add Reference**, switch to the **Solutions** tab, select **GuestBook_Data** and then click **OK**.
+1. In the new worker role project, add a reference to the data model project. In **Solution Explorer**, right-click the **GuestBook_WorkerRole** project and select **Add Reference**, switch to the **Solution** tab, select **GuestBook_Data** and then click **OK**.
 
 1. Next, add a reference to the **System.Drawing** assembly, only this time, in the Add Reference dialog, switch to the **Assemblies** tab instead, select the **System.Drawing** component and then click **OK**.
 
@@ -807,7 +809,6 @@ In this task, you add a worker role project to the solution and update it so tha
 
 	(Code Snippet – _Introduction to Cloud Services - Ex2 WorkerRole Namespaces_ – CS)
 
-	<!-- mark:1-7 -->
 	````C#
 	using System.Drawing;
 	using System.Drawing.Drawing2D;
@@ -826,10 +827,10 @@ In this task, you add a worker role project to the solution and update it so tha
 	````C#
 	public class WorkerRole : RoleEntryPoint
 	{
-	   private CloudQueue queue;
-	   private CloudBlobContainer container;
-	
-	  ...
+		private CloudQueue queue;
+		private CloudBlobContainer container;
+
+		...
 	}
 	````
 
@@ -1046,7 +1047,7 @@ You now launch the updated application in the Windows Azure compute emulator to 
 
 	_Home page showing the thumbnail generated by the worker role_
 
-1. In **Database Explorer**, expand the **Blobs** node in the **Windows Azure Storage** node, and then double-click the _guestbookpics_ container. Notice that it now contains an additional blob for the generated thumbnail image.
+1. In **Database Explorer**, expand the **Blobs** node in the **Windows Azure Storage / (Development)** node, and then double-click the _guestbookpics_ container. Notice that it now contains an additional blob for the generated thumbnail image.
 
 	![Blob container showing the blob for the generated thumbnail](Images/thumbnail-blob.png?raw=true "Blob container showing the blob for the generated thumbnail")
 
@@ -1069,7 +1070,7 @@ In this exercise, you publish the application created in the previous exercise t
 
 The application you publish in this exercise requires both compute and storage services. In this task, you create a new Windows Azure affinity group where your services will reside. In addition, you create  a new storage account to allow the application to persist its data and a cloud service component to execute application code.
 
-1. Navigate to [https://manage.windowsazure.com](https://manage.windowsazure.com) using a Web browser and sign in using the Microsoft Account associated with your Windows Azure account.
+1. Navigate to [https://manage.windowsazure.com](https://manage.windowsazure.com) using a web browser and sign in using the Microsoft Account associated with your Windows Azure account.
 
 	![Signing in to the Windows Azure Management Portal](Images/sign-in.png?raw=true "Signing in to the Windows Azure Management Portal")
 
@@ -1087,32 +1088,32 @@ The application you publish in this exercise requires both compute and storage s
 
 	_Create Virtual Netowrk_
 
-1. In the Create Virtual Network dialog box complete the **Name** and in **Affinity group** select _Create a new affinity group_. Select the desired region and complete the **Affinity Group Name**. Click the arrow on the bottom of the dialog box.
+1. In the Create a Virtual Network dialog box complete the **Name** and in **Affinity group** select _Create a new affinity group_. Select the desired region and complete the **Affinity Group Name**. Click the arrow at the bottom of the dialog box.
 
 	![Create Virtual Network dialog box](Images/create-virtual-network-dialog-box.png?raw=true "Create Virtual Network dialog box")
 
 	_Create Virtual Network dialog box_
 
-1. Leave the DNS Servers empty and click the arrow on the bottom of the dialog box.
+1. In the DNS Servers and VPN Connectivity, leave the DNS Servers empty and click **Next** at the bottom of the dialog box.
 
 	![DNS Servers and VPN Connectivity](Images/dns-servers-and-vpn-connectivity.png?raw=true "DNS Servers and VPN Connectivity")
 
 	_DNS Servers and VPN Connectivity_
 
-1. In the Virtual Network Address Spaces leave the default value and finish the wizard.
+1. In the Virtual Network Address Spaces window, leave the default values and finish the wizard.
 
 	![Virtual Network Address Spaces](Images/virtual-network-address-spaces.png?raw=true "Virtual Network Address Spaces")
 
 	_Virtual Network Address Spaces_
 
-1. In the Network Tab, wait until the Network status is Created.
+1. In the **Networks** Tab, wait until the network status changes to _Created_.
 
 	![Virtual Network Created](Images/virtual-network-created.png?raw=true "Virtual Network Created")
 
 	_Virtual Network Created_
 
 
-1. Now you will create the Cloud Service were the application will be deployed. To do so, click the **NEW** button at the bottom of the screen.
+1. Now you will create the cloud service were the application will be deployed. To do so, click the **NEW** button at the bottom of the screen.
 
 	![New button](Images/new-button.png?raw=true "New button")
 
@@ -1130,15 +1131,15 @@ The application you publish in this exercise requires both compute and storage s
 	> 
 	> Additionally, the reason that you can choose an affinity group is to deploy both the cloud service and storage account to the same location, thus ensuring high bandwidth and low latency between the application and the data it depends on.
 
-1. Next, you will create the Storage Account were the application will store the data for the appliction. To do so, click the **NEW** button at the bottom of the screen.
+1. Next, you will create the storage account where the application will store the data. To do so, click the **NEW** button at the bottom of the screen.
 
 	![New button](Images/new-button.png?raw=true "New button")
 
 	_New button_
 
-1.  Go to **Data Services | Storage | Quick Create**. In the textbox labeled **URL**, enter the name for your storage account, for example, **\<yourname\>guestbook**, where _\<yourname\>_ is a unique name. Then, select the drop down list labeled **Region/Affinity group** and pick the affinity group you created in the previous step. Wait until the provisioning process completes and updates the **Cloud Service** list view. 
+1.  Go to **Data Services | Storage | Quick Create**. In the textbox labeled **URL**, enter the name for your storage account, for example, **\<yourname\>guestbook**, where _\<yourname\>_ is a unique name. Then, select the drop down list labeled **Region/Affinity group**, pick the affinity group you created in the previous step and click **Create Storage Account**. Wait until the provisioning process completes and updates the **Storage** list view. 
 
-1. At the list view, click on the name of the new storage.
+1. At the list view, click on the name of the new storage account.
 
 	![Select the storage account ](Images/select-storage-account.png?raw=true "Select the storage account")
 
@@ -1172,10 +1173,10 @@ In this task, you publish the application to the staging environment using the M
 
 1. If the **User Account Control** dialog appears, click **Continue**.
 
-1. In the **File** menu, choose **Open** and then **Project/Solution**. In the **Open Project** dialog, browse to **\Source\Ex3-WindowsAzureDeployment**. Select **GuestBook.sln** in the **Begin** folder and click **Open**. 
-Alternatively, you may continue with the solution that you obtained after completing the previous exercise. 
+1. In the **File** menu, choose **Open Project**. In the **Open Project** dialog, browse to **\Source\Ex3-WindowsAzureDeployment**. Select **Begin.sln** in the **Begin** folder and click **Open**. 
+Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
-1. Expand the **Roles** folder in the **GuestBook** Cloud project. Right Click in **GuestBook_WebRole** and select **Properties**.
+1. Expand the **Roles** folder in the **GuestBook** cloud project. Right-click the **GuestBook_WebRole** and select **Properties**.
 
 1. Switch to the **Settings** tab and locate the _DataConnectionString_ settings.
 
@@ -1191,7 +1192,7 @@ Alternatively, you may continue with the solution that you obtained after comple
 
 	_Create Storage Connection String_
 
-1. Follow steps 5 to 7 to configure the connection string for the **Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString** in the Web Role and configure the same connection strings for the Worker Role
+1. Follow steps 5 to 7 to configure the connection string for the **Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString** in the Web Role and configure the same connection strings for the Worker Role.
 
 1. Generate the package to publish to the cloud. To do this, right-click the **GuestBook** cloud project and select **Package**. In the **Package Windows Azure Application** dialog, select the **Service Configuration** and the **Build Configuration** you will use from the dropdowns and then click **Package**. 
 After Visual Studio builds the project and generates the service package, Windows Explorer opens with the current folder set to the location where the generated package is stored.
@@ -1202,15 +1203,15 @@ After Visual Studio builds the project and generates the service package, Window
 
 	>**Note:** Although the procedure is not shown here, you can use the Publish Cloud Service feature in the Windows Azure Tools to publish your service package directly from Visual Studio. To use this feature, you need to configure a set of credentials that you use to authenticate access to the management service using a self-issued certificate that you upload to the Management Portal.
 
-1. Now, switch back to the browser window and the Management Portal.
+1. Now, switch back to the browser window with the Management Portal opened.
 
-1. At Cloud Services list, click on the name of the cloud service that you created in the previous step.
+1. In the cloud services list, click the name of the cloud service that you created before.
 
 	![Cloud Service](Images/cloud-service.png?raw=true "Cloud Service")
 
 	_Cloud Service_
 
-1. At the cloud service page, click **Staging** and then, click **Upload New Staging Environment**. 
+1. In the **Dashboard** page, click **Staging** and then **Upload a New Staging Environment**. 
 
 	![Deploy to staging environment](Images/deploy-to-staging-environment.png?raw=true "Deploy to staging environment")
 
@@ -1246,7 +1247,7 @@ After Visual Studio builds the project and generates the service package, Window
 
 	>**Note:** During deployment, Windows Azure analyzes the configuration file and copies the service to the correct number of machines, and starts all the instances. Load balancers, network devices and monitoring are also configured during this time.
 
-1. After succesfull deployment, at **Cloud Services** pages click on your cloud service name to view its dashboard
+1. After succesfull deployment, go to the **Cloud Services** pages and click your cloud service name to view its dashboard. Notice the **Site Url** assigned to your deployment under the **quick glance** section.
 	
 	![Cloud Service Dashboard](Images/cloud-service-dashboard.png?raw=true "Cloud Service Dashboard")
 
@@ -1300,7 +1301,7 @@ Before you can test the deployed application, you need to configure it. In this 
 
 In this task, you run the application in the staging environment and access its public endpoint to test that it operates correctly.
 
-1. In **Cloud Services**, click on your  service and then click the link located in the right pane under **Site URL**.
+1. Go to your cloud service's **dashboard** and then click the **Site Url** link under the **quick glance** section.
 
 	![Site URL](Images/site-url.png?raw=true "Site URL")
 
@@ -1319,7 +1320,7 @@ In this task, you run the application in the staging environment and access its 
 
 Now that you have verified that the service is working correctly in the staging environment, you are ready to promote it to final production. When you deploy the application to production, Windows Azure reconfigures its load balancers so that the application is available at its production URL.
 
-1. In **Cloud Services**, click on your service and then click **Swap** on the bottom pane.
+1. In **Cloud Services**, click on your service and then click **Swap** at the bottom menu.
 
 	![Swap slots](Images/promoting-to-the-production-s.png?raw=true "Swap slots")
 
