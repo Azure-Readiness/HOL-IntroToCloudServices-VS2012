@@ -6,8 +6,6 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.Security;
 using GuestBook_WebRole;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.ServiceRuntime;
 
 namespace GuestBook_WebRole
 {
@@ -15,10 +13,10 @@ namespace GuestBook_WebRole
     {
         void Application_Start(object sender, EventArgs e)
         {
-            Microsoft.WindowsAzure.CloudStorageAccount.SetConfigurationSettingPublisher((configName, configSetter) =>
-            {
-                configSetter(RoleEnvironment.GetConfigurationSettingValue(configName));
-            });
+            // Code that runs on application startup
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AuthConfig.RegisterOpenAuth();
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
 
         void Application_End(object sender, EventArgs e)

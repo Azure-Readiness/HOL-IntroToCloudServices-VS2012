@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.WindowsAzure.StorageClient;
 
 namespace GuestBook_Data
 {
-    public class GuestBookEntry
-        : Microsoft.WindowsAzure.StorageClient.TableServiceEntity
+    public class GuestBookEntry : Microsoft.WindowsAzure.Storage.Table.TableEntity
     {
         public GuestBookEntry()
         {

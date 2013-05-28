@@ -36,7 +36,7 @@ namespace GuestBook_WebRole.Account
                 if (message != null)
                 {
                     // Strip the query string from action
-                    Form.Action = ResolveUrl("~/Account/Manage.aspx");
+                    Form.Action = ResolveUrl("~/Account/Manage");
 
                     SuccessMessage =
                         message == "ChangePwdSuccess" ? "Your password has been changed."
@@ -56,7 +56,7 @@ namespace GuestBook_WebRole.Account
                 var result = OpenAuth.AddLocalPassword(User.Identity.Name, password.Text);
                 if (result.IsSuccessful)
                 {
-                    Response.Redirect("~/Account/Manage.aspx?m=SetPwdSuccess");
+                    Response.Redirect("~/Account/Manage?m=SetPwdSuccess");
                 }
                 else
                 {
@@ -80,7 +80,7 @@ namespace GuestBook_WebRole.Account
             var m = OpenAuth.DeleteAccount(User.Identity.Name, providerName, providerUserId)
                 ? "?m=RemoveLoginSuccess"
                 : String.Empty;
-            Response.Redirect("~/Account/Manage.aspx" + m);
+            Response.Redirect("~/Account/Manage" + m);
         }
 
 

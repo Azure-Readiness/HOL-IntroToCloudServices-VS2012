@@ -99,7 +99,7 @@
                                     says
                                 </div>
                                 <div class="signatureDate">
-                                    <%# ((DateTime)Eval("Timestamp")).ToShortDateString() %>
+                                     <%# ((DateTimeOffset)Eval("Timestamp")).ToString() %>
                                 </div>
                                 <div class="signatureMessage">
                                     "<%# Eval("Message") %>"

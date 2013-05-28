@@ -18,7 +18,7 @@ namespace GuestBook_WebRole.Account
                     return;
                 }
 
-                var redirectUrl = "~/Account/RegisterExternalLogin.aspx";
+                var redirectUrl = "~/Account/RegisterExternalLogin";
                 if (!String.IsNullOrEmpty(ReturnUrl))
                 {
                     var resolvedReturnUrl = ResolveUrl(ReturnUrl);

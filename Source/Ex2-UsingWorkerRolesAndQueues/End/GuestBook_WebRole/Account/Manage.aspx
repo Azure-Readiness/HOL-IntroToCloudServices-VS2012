@@ -49,7 +49,7 @@
 
         <asp:PlaceHolder runat="server" ID="changePassword" Visible="false">
             <h3>Change password</h3>
-            <asp:ChangePassword runat="server" CancelDestinationPageUrl="~/" ViewStateMode="Disabled" RenderOuterTable="false" SuccessPageUrl="Manage.aspx?m=ChangePwdSuccess">
+            <asp:ChangePassword runat="server" CancelDestinationPageUrl="~/" ViewStateMode="Disabled" RenderOuterTable="false" SuccessPageUrl="Manage?m=ChangePwdSuccess">
                 <ChangePasswordTemplate>
                     <p class="validation-summary-errors">
                         <asp:Literal runat="server" ID="FailureText" />
@@ -121,6 +121,6 @@
         </asp:ListView>
 
         <h3>Add an external login</h3>
-        <uc:OpenAuthProviders runat="server" ReturnUrl="~/Account/Manage.aspx" />
+        <uc:OpenAuthProviders runat="server" ReturnUrl="~/Account/Manage" />
     </section>
 </asp:Content>

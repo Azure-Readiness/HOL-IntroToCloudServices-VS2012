@@ -1,10 +1,10 @@
-# Introduction to Cloud Services - for Visual Studio 2012 #
+﻿# Introduction to Cloud Services - for Visual Studio 2012 #
 
 ## Hands-on Lab ##
 
 ### Introduction ###
 
-Hands-On Labs are sets of step-by-step guides that are designed to help you learn how to use key Windows Azure services and features.  Each Lab provides instructions to guide you through the process of developing a complete application.
+Hands-On Labs are sets of step-by-step guides that are designed to help you learn how to use key Windows Azure services and features. Each lab provides instructions to guide you through the process of developing a complete application.
 
 In this hands-on lab, you will explore the basic elements of a Windows Azure Cloud Service by creating a simple GuestBook application that demonstrates many features of web and worker roles, blob storage, table storage, and queues.
 

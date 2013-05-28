@@ -8,7 +8,9 @@ using System.IO;
 using System.Net;
 using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.ServiceRuntime;
-using Microsoft.WindowsAzure.StorageClient;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Queue;
 using GuestBook_Data;
 
 namespace GuestBook_WebRole
@@ -36,7 +38,7 @@ namespace GuestBook_WebRole
 
                 // upload the image to blob storage
                 string uniqueBlobName = string.Format("guestbookpics/image_{0}{1}", Guid.NewGuid().ToString(), Path.GetExtension(this.FileUpload1.FileName));
-                CloudBlockBlob blob = blobStorage.GetBlockBlobReference(uniqueBlobName);
+                CloudBlockBlob blob = blobStorage.GetContainerReference("guestbookpics").GetBlockBlobReference(uniqueBlobName);
                 blob.Properties.ContentType = this.FileUpload1.PostedFile.ContentType;
                 blob.UploadFromStream(this.FileUpload1.FileContent);
                 System.Diagnostics.Trace.TraceInformation("Uploaded image '{0}' to blob storage as '{1}'", this.FileUpload1.FileName, uniqueBlobName);
@@ -49,7 +51,7 @@ namespace GuestBook_WebRole
 
                 // queue a message to process the image
                 var queue = queueStorage.GetQueueReference("guestthumbs");
-                var message = new CloudQueueMessage(string.Format("{0},{1},{2}", blob.Uri.ToString(), entry.PartitionKey, entry.RowKey));
+                var message = new CloudQueueMessage(string.Format("{0},{1},{2}", uniqueBlobName, entry.PartitionKey, entry.RowKey));
                 queue.AddMessage(message);
                 System.Diagnostics.Trace.TraceInformation("Queued message to process blob '{0}'", uniqueBlobName);
             }
@@ -82,12 +84,12 @@ namespace GuestBook_WebRole
                 try
                 {
                     // read account configuration settings
-                    var storageAccount = CloudStorageAccount.FromConfigurationSetting("DataConnectionString");
+                    var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("DataConnectionString"));
 
                     // create blob container for images
                     blobStorage = storageAccount.CreateCloudBlobClient();
                     CloudBlobContainer container = blobStorage.GetContainerReference("guestbookpics");
-                    container.CreateIfNotExist();
+                    container.CreateIfNotExists();
 
                     // configure container for public access
                     var permissions = container.GetPermissions();
@@ -97,7 +99,7 @@ namespace GuestBook_WebRole
                     // create queue to communicate with worker role
                     queueStorage = storageAccount.CreateCloudQueueClient();
                     CloudQueue queue = queueStorage.GetQueueReference("guestthumbs");
-                    queue.CreateIfNotExist();
+                    queue.CreateIfNotExists();
                 }
                 catch (WebException)
                 {

@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 
 namespace GuestBook_Data
 {
-    public class GuestBookDataContext
-        : Microsoft.WindowsAzure.StorageClient.TableServiceContext
+    public class GuestBookDataContext : Microsoft.WindowsAzure.Storage.Table.DataServices.TableServiceContext
     {
-        public GuestBookDataContext(string baseAddress, Microsoft.WindowsAzure.StorageCredentials credentials)
-            : base(baseAddress, credentials)
+        public GuestBookDataContext(Microsoft.WindowsAzure.Storage.Table.CloudTableClient client)
+            : base(client)
         {
         }
-
+        
         public IQueryable<GuestBookEntry> GuestBookEntry
         {
             get
