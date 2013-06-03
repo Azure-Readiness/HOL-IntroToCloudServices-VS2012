@@ -791,7 +791,7 @@ In this task, you add a worker role project to the solution and update it so tha
 
 1. If not already open, launch **Microsoft Visual Studio 2012 Express for Web** as administrator by right clicking the **Microsoft Visual Studio 2012 Express for Web** shortcut and choosing **Run as administrator**. 
 
-1. In the **File** menu, choose **Open Project**. In the **Open Project** dialog, browse to **\Source\Ex2-UsingWorkerRolesAndQueues\Begin**, select **GuestBook.sln** and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
+1. In the **File** menu, choose **Open Project**. In the **Open Project** dialog, browse to **\Source\Ex2-UsingWorkerRolesAndQueues\Begin**, select **Begin.sln** and click **Open**. Alternatively, you may continue with the solution that you obtained after completing the previous exercise.
 
 1. In **Solution Explorer**, right-click the Roles node in the **GuestBook** project and then select **Add** | **New Worker Role Project**.
 
