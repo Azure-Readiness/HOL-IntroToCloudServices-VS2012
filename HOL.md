@@ -1180,7 +1180,7 @@ Alternatively, you may continue with the solution that you obtained after comple
 
 1. Switch to the **Settings** tab and locate the _DataConnectionString_ settings.
 
-1. Click in the **Elipsis** located under the **Value** column for the _DataConnectionString_.
+1. Click in the **Ellipsis** located under the **Value** column for the _DataConnectionString_.
 
 	![DataConnectionString settings](Images/dataconnectionstring-settings.png?raw=true "DataConnectionString settings")
 
