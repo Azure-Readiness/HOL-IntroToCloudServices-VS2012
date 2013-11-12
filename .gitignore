@@ -50,3 +50,4 @@ pkg
 coverage
 *.docstates
 *.InstallLog
+entry.xml
